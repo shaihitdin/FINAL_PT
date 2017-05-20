@@ -81,6 +81,7 @@ namespace Task1
                     {
                         Console.WriteLine("no");
                     }
+                    b.Close();
                 }
             }
         }
