@@ -17,8 +17,16 @@ namespace Task4
         public Form1()
         {
             InitializeComponent();
+            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.CreateGraphics();
-            bmp = new Bitmap ()
+                /*
+                 * Bitmap
+                 * fromImage
+                 * creategraphics (unnecessary)
+                 * no circle
+                 * 
+                 * 
+                 * */
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
