@@ -30,9 +30,6 @@ namespace Task2
                     b[i * 3 + j].UseVisualStyleBackColor = true;
                 }
             }
-            ResumeLayout(false);
-            PerformLayout();
-
         }
 
     }
