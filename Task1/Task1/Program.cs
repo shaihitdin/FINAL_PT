@@ -9,12 +9,38 @@ namespace Task1
 {
     class Program
     {
-        static int[] ReadInt (StreamReader a)
+        static int[] ReadInts (StreamReader a)
         {
+            int cnt = 0;
+            int[] retval = new int[2];
             while (true)
             {
-                int[] tmp = a.ReadLine().Split(' ');
+                string s = a.ReadLine();
+                if (s == null)
+                    break;
+                int x = 0, lst = -1;
+                for (int i = 0; i < s.Length; ++i)
+                {
+                    if (s[i] == ' ')
+                    {
+                        if (lst != i - 1)
+                            retval[cnt++] = x;
+                        x = 0;
+                        lst = i;
+                        continue;
+                    }
+                    x = x * 10 + (s[i] - '0');
+                    if (i + 1 == s.Length)
+                    {
+                        if (lst != i - 1)
+                            retval[cnt++] = x;
+                        x = 0;
+                        lst = i;
+                        continue;
+                    }
+                }
             }
+            return retval;
         }
 
 
@@ -28,9 +54,7 @@ namespace Task1
                 {
                     StreamReader b = new StreamReader(new FileStream(a.Name, FileMode.Open, FileAccess.ReadWrite));
                     Console.WriteLine(a.Name + ": ");
-                    int[] c = new int[2];
-                    c[0] = ReadInt(b);
-                    c[1] = ReadInt(b);
+                    int[] c = ReadInts (b);
                     Console.WriteLine(c[0]);
                     Console.WriteLine(c[1]);
                     if (c[0] > c[1])
